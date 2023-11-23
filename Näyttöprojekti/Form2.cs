@@ -12,7 +12,10 @@ namespace Näyttöprojekti
 {
     public partial class Pong : Form
     {
-
+        private int paddleSpeed = 5;
+        private int ballSpeed = 5;
+        private int ballXSpeed = 3;
+        private int ballYSpeed = 3;
         public Pong()
         {
             InitializeComponent();
@@ -86,6 +89,7 @@ namespace Näyttöprojekti
         private void gameTimer_Tick(object sender, EventArgs e)
         {
             this.gameTimer.Tick += new System.EventHandler(this.gameTimer_Tick);
+
         }
 
     }

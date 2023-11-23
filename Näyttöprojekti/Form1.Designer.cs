@@ -66,6 +66,7 @@
             this.Controls.Add(this.label1);
             this.Name = "Pelivalikko";
             this.Text = "Minipelejä";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Pelivalikko_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 

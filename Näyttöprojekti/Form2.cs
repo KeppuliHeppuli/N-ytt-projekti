@@ -10,19 +10,16 @@ using System.Windows.Forms;
 
 namespace Näyttöprojekti
 {
-    public partial class Pelivalikko : Form
+    public partial class Pong : Form
     {
-        public Pelivalikko()
+        public Pong()
         {
             InitializeComponent();
         }
 
-        private void pongButton_Click(object sender, EventArgs e)
+        private void Form2_Load(object sender, EventArgs e)
         {
-            Pong form2 = new Pong();
-            form2.Show();
-            this.Hide();
-            
+
         }
     }
 }

@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 using System.Windows.Forms;
 
 namespace Näyttöprojekti
@@ -15,25 +16,75 @@ namespace Näyttöprojekti
         private const int initialBallLeft = 434;
         private const int initialBallTop = 239;
         private const int initialBallSpeedX = 5; 
-        private const int initialBallSpeedY = 5; 
+        private const int initialBallSpeedY = 5;
+
+        private const int initialplayerLeft = 12;
+        private const int initialplayerTop = 186;
+
         bool goup;
         bool godown;
+
         int speed = 5;                                                                                                                                                                                                                   
         int ballx = 5;
         int bally=5;
+
         int score = 0;
         int cpupoint = 0;
         int wins = 0;
         int cpuwins = 0;
-        
+
+        private const string highScoreFilePath = "C:/Users/atte-/source/repos/Nayttoprojekti/Highscore.txt";
+
+
         public Pong()
         {
             InitializeComponent();
-        
+            LoadHighScore();
         }
+        private void SaveHighScore()
+        {
+            try
+            {
+                using (StreamWriter writer = new StreamWriter(highScoreFilePath))
+                {
+                    writer.WriteLine("Wins: " + wins);
+                    writer.WriteLine("CPU Wins: " + cpuwins);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error saving high score: " + ex.Message);
+            }
+        }
+
+        private void LoadHighScore()
+        {
+            try
+            {
+                if (File.Exists(highScoreFilePath))
+                {
+                    using (StreamReader reader = new StreamReader(highScoreFilePath))
+                    {
+                        string winsLine = reader.ReadLine();
+                        string cpuWinsLine = reader.ReadLine();
+
+                        if (int.TryParse(winsLine?.Substring(winsLine.IndexOf(':') + 1).Trim(), out wins))
+                            playerWins.Text = wins.ToString();
+
+                        if (int.TryParse(cpuWinsLine?.Substring(cpuWinsLine.IndexOf(':') + 1).Trim(), out cpuwins))
+                            cpuWins.Text = cpuwins.ToString();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error loading high score: " + ex.Message);
+            }
+        }
+
         private void ResetGame()
         {
-            if (score == 10)
+            if (cpupoint > 9)
             {
                 cpuwins++;
             }
@@ -41,13 +92,18 @@ namespace Näyttöprojekti
             {
                 wins++;
             }
-           
+            ResetKeyStates();
+            SaveHighScore();
             score = 0;
             cpupoint = 0;
             ball.Left = initialBallLeft; 
             ball.Top = initialBallTop;   
             ballx = initialBallSpeedX;   
-            bally = initialBallSpeedY;  
+            bally = initialBallSpeedY;
+            playerPaddle.Left = initialplayerLeft;
+            playerPaddle.Top = initialplayerTop;
+
+           
 
 
         }
@@ -80,6 +136,12 @@ namespace Näyttöprojekti
                 godown = false;
             }
         }
+        private void ResetKeyStates()
+        {
+            goup = false;   //nämä estää keypressejä jäämästä "pohjaan" kun peli päättyy
+            godown = false; 
+            cpuPaddle.Top = Math.Max(0, Math.Min(ClientSize.Height - cpuPaddle.Height, ball.Top + 30)); //resetoi tietokoneen kapulan että ei jää jumiin
+        }                                                                                               //pelin päätyttyä/resetoitua   
 
 
 
@@ -131,8 +193,8 @@ namespace Näyttöprojekti
                 }
                 else
                 {                                    //Jos pisteet on suurempi kuin 5
-                    cpuPaddle.Top = ball.Top + 30;   // tekee pelistä vaikeamman antamalla
-                }                                    // TK nopeammin yrittää ampua pallo takaisin
+                    cpuPaddle.Top = ball.Top + 30;   // tekee pelistä vaikeamman 
+                }                                    // TK nopeammin yrittää ampua pallon takaisin
 
 
 
@@ -182,7 +244,7 @@ namespace Näyttöprojekti
            {
                 gameTimer.Stop();
 
-                DialogResult result = MessageBox.Show("Haluatko aloittaa uuden pelin?", "Peli päättyi", MessageBoxButtons.YesNo);
+                DialogResult result = MessageBox.Show("Do you want to start a new game?", "Game Over", MessageBoxButtons.YesNo);
 
                 if (result == DialogResult.Yes)
                 {
@@ -191,8 +253,7 @@ namespace Näyttöprojekti
                 }
                 else if (result == DialogResult.No)
                 {
-                    this.Close();
-                   
+                    this.Close(); 
                 }
             }
                 
@@ -204,12 +265,11 @@ namespace Näyttöprojekti
         {
             Pelivalikko form2 = new Pelivalikko();
             form2.Show();
-
+           
+           
             if (e.Cancel)
             {
-
                 return;
-
             }
 
         }

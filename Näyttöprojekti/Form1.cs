@@ -28,6 +28,7 @@ namespace Näyttöprojekti
         private void Pelivalikko_FormClosing(object sender, FormClosingEventArgs e)
         {
             Application.Exit();
+           
         }
     }
 }

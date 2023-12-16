@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Näyttöprojekti
 {
-    public partial class Pelivalikko : Form
+    public partial class GameMenu : Form
     {
-        public Pelivalikko()
+        public GameMenu()
         {
             InitializeComponent();
         }
@@ -23,6 +23,12 @@ namespace Näyttöprojekti
             form2.Show();
             this.Hide();
             
+        }
+        private void breakoutButton_Click(object sender, EventArgs e)
+        {
+            Breakout form3 = new Breakout();
+            form3.Show();
+            this.Hide();
         }
 
         private void Pelivalikko_FormClosing(object sender, FormClosingEventArgs e)

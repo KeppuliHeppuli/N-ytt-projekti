@@ -1,6 +1,6 @@
 ﻿namespace Näyttöprojekti
 {
-    partial class Pelivalikko
+    partial class GameMenu
     {
         /// <summary>
         /// Required designer variable.
@@ -30,17 +30,18 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.pongButton = new System.Windows.Forms.Button();
+            this.breakoutButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(322, 77);
+            this.label1.Location = new System.Drawing.Point(289, 109);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(145, 31);
+            this.label1.Size = new System.Drawing.Size(204, 31);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Valitse peli";
+            this.label1.Text = "Choose a game";
             // 
             // pongButton
             // 
@@ -56,16 +57,31 @@
             this.pongButton.UseVisualStyleBackColor = false;
             this.pongButton.Click += new System.EventHandler(this.pongButton_Click);
             // 
-            // Pelivalikko
+            // breakoutButton
+            // 
+            this.breakoutButton.BackColor = System.Drawing.Color.SeaShell;
+            this.breakoutButton.FlatAppearance.BorderSize = 2;
+            this.breakoutButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.breakoutButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.breakoutButton.Location = new System.Drawing.Point(424, 279);
+            this.breakoutButton.Name = "breakoutButton";
+            this.breakoutButton.Size = new System.Drawing.Size(90, 47);
+            this.breakoutButton.TabIndex = 1;
+            this.breakoutButton.Text = "Breakout";
+            this.breakoutButton.UseVisualStyleBackColor = false;
+            this.breakoutButton.Click += new System.EventHandler(this.breakoutButton_Click);
+            // 
+            // GameMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightGray;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.breakoutButton);
             this.Controls.Add(this.pongButton);
             this.Controls.Add(this.label1);
-            this.Name = "Pelivalikko";
-            this.Text = "Minipelejä";
+            this.Name = "GameMenu";
+            this.Text = "Minigames";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Pelivalikko_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -76,6 +92,7 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button pongButton;
+        private System.Windows.Forms.Button breakoutButton;
     }
 }
 

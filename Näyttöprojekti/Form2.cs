@@ -253,6 +253,7 @@ namespace Näyttöprojekti
                 }
                 else if (result == DialogResult.No)
                 {
+                    ResetGame();
                     this.Close(); 
                 }
             }
@@ -263,7 +264,7 @@ namespace Näyttöprojekti
 
         private void Pong_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Pelivalikko form2 = new Pelivalikko();
+            GameMenu form2 = new GameMenu();
             form2.Show();
            
            

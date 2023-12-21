@@ -49,7 +49,7 @@
             this.pongButton.FlatAppearance.BorderSize = 2;
             this.pongButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.pongButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pongButton.Location = new System.Drawing.Point(328, 279);
+            this.pongButton.Location = new System.Drawing.Point(295, 279);
             this.pongButton.Name = "pongButton";
             this.pongButton.Size = new System.Drawing.Size(90, 47);
             this.pongButton.TabIndex = 1;
@@ -63,7 +63,7 @@
             this.breakoutButton.FlatAppearance.BorderSize = 2;
             this.breakoutButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.breakoutButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.breakoutButton.Location = new System.Drawing.Point(424, 279);
+            this.breakoutButton.Location = new System.Drawing.Point(403, 279);
             this.breakoutButton.Name = "breakoutButton";
             this.breakoutButton.Size = new System.Drawing.Size(90, 47);
             this.breakoutButton.TabIndex = 1;
@@ -83,6 +83,7 @@
             this.Name = "GameMenu";
             this.Text = "Minigames";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Pelivalikko_FormClosing);
+            this.Load += new System.EventHandler(this.GameMenu_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

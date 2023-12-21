@@ -36,5 +36,10 @@ namespace Näyttöprojekti
             Application.Exit();
            
         }
+
+        private void GameMenu_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

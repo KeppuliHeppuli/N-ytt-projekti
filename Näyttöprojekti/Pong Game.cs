@@ -33,7 +33,7 @@ namespace Näyttöprojekti
         int wins = 0;
         int cpuwins = 0;
 
-        private const string highScoreFilePath = "C:/Users/atte-/source/repos/Nayttoprojekti/Highscore.txt";
+        private readonly string highscoreFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory,"Highscore.txt");
 
 
         public Pong()
@@ -45,10 +45,11 @@ namespace Näyttöprojekti
         {
             try
             {
-                using (StreamWriter writer = new StreamWriter(highScoreFilePath))
                 {
-                    writer.WriteLine("Wins: " + wins);
-                    writer.WriteLine("CPU Wins: " + cpuwins);
+                    Properties.Settings.Default.Wins = wins;
+                    Properties.Settings.Default.CPUWins = cpuwins;
+
+                    Properties.Settings.Default.Save();
                 }
             }
             catch (Exception ex)
@@ -61,20 +62,13 @@ namespace Näyttöprojekti
         {
             try
             {
-                if (File.Exists(highScoreFilePath))
-                {
-                    using (StreamReader reader = new StreamReader(highScoreFilePath))
-                    {
-                        string winsLine = reader.ReadLine();
-                        string cpuWinsLine = reader.ReadLine();
+                wins = Properties.Settings.Default.Wins;
+                cpuwins = Properties.Settings.Default.CPUWins;
 
-                        if (int.TryParse(winsLine?.Substring(winsLine.IndexOf(':') + 1).Trim(), out wins))
-                            playerWins.Text = wins.ToString();
+                playerWins.Text = wins.ToString();
+                cpuWins.Text = cpuwins.ToString();
 
-                        if (int.TryParse(cpuWinsLine?.Substring(cpuWinsLine.IndexOf(':') + 1).Trim(), out cpuwins))
-                            cpuWins.Text = cpuwins.ToString();
-                    }
-                }
+                
             }
             catch (Exception ex)
             {

@@ -1,2 +1,0 @@
-Wins: 5
-CPU Wins: 3

@@ -33,7 +33,7 @@ namespace Näyttöprojekti
         int wins = 0;
         int cpuwins = 0;
 
-       // private readonly string highscoreFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory,"Highscore.txt");
+       private readonly string highscoreFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory,"Highscore.txt");
 
 
         public Pong()
@@ -46,6 +46,7 @@ namespace Näyttöprojekti
             try
             {
                 {
+                    
                     Properties.Settings.Default.Wins = wins;
                     Properties.Settings.Default.CPUWins = cpuwins;
 
@@ -177,7 +178,6 @@ namespace Näyttöprojekti
 
                 cpuPaddle.Top += speed;
 
-
                 if (score < 5)
                 {
                     if (cpuPaddle.Top < 0 || cpuPaddle.Top > 455)
@@ -189,8 +189,6 @@ namespace Näyttöprojekti
                 {                                    //Jos pisteet on suurempi kuin 5
                     cpuPaddle.Top = ball.Top + 30;   // tekee pelistä vaikeamman 
                 }                                    // TK nopeammin yrittää ampua pallon takaisin
-
-
 
 
                 if (ball.Left < 0)            //Tarkistaa onko pallo mennyt pelaajan "maaliin" 

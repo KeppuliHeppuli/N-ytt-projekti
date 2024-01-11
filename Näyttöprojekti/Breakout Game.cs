@@ -48,10 +48,16 @@ namespace Näyttöprojekti
             }
         }
 
+        private void ResetKeyState()
+        {
+            goLeft = false;
+            goRight = false;
+        }
+
         private void setupGame()
         {
             isGameOver = false;
-
+            ResetKeyState();
             score = 0;
             ballx = 5;
             bally = 5;
@@ -170,7 +176,7 @@ namespace Näyttöprojekti
 
 
 
-            if (score == 35)
+            if (score == 34)
             {
                 gameTimer.Stop();
                 gameEnd();

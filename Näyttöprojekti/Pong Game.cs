@@ -219,7 +219,16 @@ namespace Näyttöprojekti
                 if (ball.Bounds.IntersectsWith(playerPaddle.Bounds) || ball.Bounds.IntersectsWith(cpuPaddle.Bounds))
                 {
                     ballx = -ballx; //lyö pallon takaisin
+                
+                if (ball.Bounds.IntersectsWith(playerPaddle.Bounds))  //Jos pallo osuu mailaan, estää palloa jäämästä jumiin pelaajan mailaan
+                {
+                    ball.Left = playerPaddle.Right + 1;
                 }
+                else if (ball.Bounds.IntersectsWith(cpuPaddle.Bounds)) //jos pallo osuu TK mailaan, estää palloa jäämästä jumiin TK mailaan
+                {
+                    ball.Left = cpuPaddle.Left - ball.Width - 1;
+                }
+            }
 
                 //pelaajan ohjaus
 

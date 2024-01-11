@@ -33,7 +33,7 @@ namespace Näyttöprojekti
         int wins = 0;
         int cpuwins = 0;
 
-        private readonly string highscoreFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory,"Highscore.txt");
+       // private readonly string highscoreFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory,"Highscore.txt");
 
 
         public Pong()

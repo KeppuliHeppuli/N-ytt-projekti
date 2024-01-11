@@ -21,7 +21,6 @@ namespace Näyttöprojekti
         {
             Pong form2 = new Pong();
             form2.Show();
-            this.Hide();
             
         }
         private void breakoutButton_Click(object sender, EventArgs e)
